@@ -1,0 +1,6 @@
+---
+- name: Get Session Type
+  command: "echo $XDG_SESSION_TYPE"
+  register: session_type
+
+# https://itsfoss.com/check-wayland-or-xorg/

@@ -1,13 +1,17 @@
 ---
+- name: install default FreeRDP Client
+  ansible.builtin.apt:
+    pkg:
+    - freerdp2-x11
 
 - name: install FreeRDP Client for Wayland
   ansible.builtin.apt:
     pkg:
     - freerdp2-wayland
-  when: display_server == "wayland"
+  when: session_type.stdout == "wayland"
 
 - name: install FreeRDP Client for X11
   ansible.builtin.apt:
     pkg:
     - freerdp2-x11
-  when: display_server == "x11"
+  when: session_type.stdout == "x11"
